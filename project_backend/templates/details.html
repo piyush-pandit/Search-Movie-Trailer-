@@ -1,0 +1,13 @@
+
+{% extends 'index.html' %}
+
+{% block content %}
+
+<div style="text-align: center; width :60%; margin-left: 20%; margin-right: 20%";>
+    <h1 class="title">Details of " {{details.title}} "</h1>
+    <h4 class= "description">Description :- </br></br>{{ details.description}}</h4> </br>
+    <iframe width='100%' height="410" src="{{ trailerUrl }}"></iframe></br></br>
+</div>
+
+
+{% endblock %}
