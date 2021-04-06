@@ -1,0 +1,57 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<section class="jumbotron text-center">
+    <div class="container">
+        <h1 class="jumbotron-heading">Search Trailers</h1>
+        <p class="lead text-shown">You will get results on YouTube for your query!</p>
+        <form class="my-2" method="POST">
+            <div class="input-group mb-3">
+                {% csrf_token %}
+                <input class="form-control mr-sm-2" type="text" name="search" placeholder="Search Movie-Name" aria-label="Search">
+                <button type="submit" value= "search" class="btn btn-outline-primary">Search</button>
+            </div>
+        </form>
+    </div>
+</section>
+
+
+
+<!--  Result Section  -->
+
+<div>
+    <div class="container">
+        <div class="row">
+            {% for movie in movie_list %}
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <img
+                        class="bd-placeholder-img card-img-top"
+                        width="fit-content"
+                        height="200"
+                        src="{{ movie.Poster }}"
+                        preserveAspectRatio="xMidYMid slice"
+                        focusable="false"
+                        role="img"
+                        aria-label="Placeholder: Thumbnail"
+                    ></img>
+                <div class="card-body">
+                    <p class="card-text">{{ movie.Title }}</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                            <a type="button" href="/{{ movie.imdbID }}" class="btn btn-sm btn-outline-secondary">View Details</a>
+                        </div>
+                        <small class="text-muted">{{ movie.year }} year</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+</div>
+
+
+
+{% endblock %}
