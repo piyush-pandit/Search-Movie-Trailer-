@@ -49,7 +49,7 @@ def youtubeTrailer(request,imdb):
     context = {}
     print(type(imdb),imdb)
 
-    url = setting.RAPID_API_BASE_BY_ID
+    url = settings.RAPID_API_BASE_BY_ID
 
     querystring = {"type":"get-movie-details","imdb":imdb }
 
